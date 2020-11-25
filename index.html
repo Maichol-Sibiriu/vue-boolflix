@@ -13,7 +13,9 @@
     <div id="boolflix">
 
       <input type="text"
-             placeholder="inserisci titolo">
+             placeholder="inserisci titolo"
+             v-model="search"
+             @keyup.enter="searchMovie">
 
       <button type="button"
               name="button"
@@ -23,17 +25,11 @@
       <div class="result-list">
 
         <ul>
-          <li>
-            {{  }}
-          </li>
-          <li>
-            {{  }}
-          </li>
-          <li>
-            {{  }}
-          </li>
-          <li>
-            {{  }}
+          <li v-for="element in obj">
+            <p>{{ element.title }}</p>
+            <p>{{ element.original_title }}</p>
+            <p>{{ element.original_language }}</p>
+            <p>{{ element.vote_average }}</p>
           </li>
         </ul>
 
