@@ -16,6 +16,7 @@ const app = new Vue({
   methods:{
 
     searchMovie(){
+
       axios.get('https://api.themoviedb.org/3/search/movie',{
         params:{
          api_key: '4b07c066077a749793da32ab86c8cf25',
@@ -25,12 +26,12 @@ const app = new Vue({
       .then( response => {
         // console.log(response.data);
 
-        if (this.search.trim() !== '') {
+        if (this.search !== '') {
           let list = response.data.results;
 
           list.forEach( film => {
 
-            if (film.title.toLowerCase().includes(this.search.trim().toLowerCase()) === true) {
+            if (film.title.toLowerCase().includes(this.search.toLowerCase()) || film.original_title.toLowerCase().includes(this.search.toLowerCase()) ) {
               this.obj.push({
                 title: film.title,
                 original_title: film.original_title,
@@ -40,6 +41,7 @@ const app = new Vue({
             }
 
           });
+
         }
 
         this.search = '';
@@ -48,7 +50,12 @@ const app = new Vue({
       .catch( error => {
        console.log(error);
       })
-    }
+    },
+
+    // voti stelline
+    star(vote){
+      return Math.ceil(element.vote_average / 2);
+    },
 
   },
 });

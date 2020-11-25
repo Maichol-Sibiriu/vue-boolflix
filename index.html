@@ -19,6 +19,7 @@
 
       <button type="button"
               name="button"
+              @click="searchMovie"
               >cerca
       </button>
 
@@ -29,7 +30,15 @@
             <p>{{ element.title }}</p>
             <p>{{ element.original_title }}</p>
             <p>{{ element.original_language }}</p>
-            <p>{{ element.vote_average }}</p>
+
+            <div class="">
+
+              <i v-for="n in star(vote)"
+                 class="fas fa-star"></i>
+              <i v-for="n in 5"
+                 class="far fa-star"></i>
+
+            </div>
           </li>
         </ul>
 
