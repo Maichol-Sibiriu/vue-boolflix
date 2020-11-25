@@ -23,13 +23,14 @@ const app = new Vue({
         }
       })
       .then( response => {
+        // console.log(response.data);
 
         if (this.search.trim() !== '') {
-          const list = response.data.results;
+          let list = response.data.results;
 
-          this.list.forEach( film => {
+          list.forEach( film => {
 
-            if (this.list.toLowerCase().includes(this.search.trim().toLowerCase()) === true) {
+            if (film.title.toLowerCase().includes(this.search.trim().toLowerCase()) === true) {
               this.obj.push({
                 title: film.title,
                 original_title: film.original_title,
@@ -43,7 +44,6 @@ const app = new Vue({
 
         this.search = '';
 
-       // console.log(response.data);
       })
       .catch( error => {
        console.log(error);
