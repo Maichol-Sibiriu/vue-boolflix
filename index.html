@@ -12,44 +12,64 @@
 
     <div id="boolflix">
 
-      <!-- logo -->
-      <img src="https://fontmeme.com/temporary/0a43aa36584f2895324a0006b42b5d1a.png" alt="">
+      <header>
 
-      <input type="text"
-             placeholder="inserisci titolo"
-             v-model="search"
-             @keyup.enter="searchMovie">
+        <!-- logo -->
+        <img src="https://fontmeme.com/permalink/201126/c112d23b1ab08386f7816f4541790f22.png" alt="">
 
-      <button type="button"
-              name="button"
-              @click="searchMovie"
-              >cerca
-      </button>
+        <!-- ricerca -->
+        <div class="search">
 
-      <div class="result-list">
+          <input type="text"
+          placeholder="inserisci titolo"
+          v-model="search"
+          @keyup.enter="searchMovie">
 
-        <ul>
-          <li v-for="element in obj">
-            <img v-if="element.poster_path === null" src="https://www.altavod.com/assets/images/poster-placeholder.png" alt="">
-            <img v-else :src="imgMovie + element.poster_path" alt="">
-            <h3>title :</h3>
-            <p v-if="element.title">{{ element.title }}</p>
-            <p v-else>{{ element.name }}</p>
-            <h3>original_title :</h3>
-            <p v-if="element.original_title">{{ element.original_title }}</p>
-            <p v-else>{{ element.original_name }}</p>
-            <h3>original_language :</h3>
-            <p v-if= "element.original_language !== 'it' && element.original_language !== 'en' ">{{ element.original_language }}</p>
-            <img v-else :src=" './img/' + element.original_language + '.png' " alt="">
-            <h3>vote_average :</h3>
-            <i v-for="n in star(element.vote_average)"
-                 class="fas fa-star"></i>
-            <i v-for="n in 5 - star(element.vote_average)"
-                 class="far fa-star"></i>
-          </li>
-        </ul>
+          <button type="button"
+          name="button"
+          @click="searchMovie"
+          >cerca
+          </button>
 
-      </div>
+        </div>
+      </header>
+
+       <!-- lista film/serie tv -->
+      <main>
+
+        <div class="result-list">
+
+          <ul>
+            <li v-for="element in obj">
+
+              <!-- immagine film/serie tv -->
+              <img v-if="element.poster_path === null" src="https://www.altavod.com/assets/images/poster-placeholder.png" alt="">
+              <img v-else :src="imgMovie + element.poster_path" alt="">
+
+              <!-- titolo -->
+              <h3 v-if="element.title">{{ element.title }}</h3>
+              <h3 v-else>{{ element.name }}</h3>
+
+              <!-- titolo originale -->
+              <p v-if="element.original_title">{{ element.original_title }}</p>
+              <p v-else>{{ element.original_name }}</p>
+
+              <!-- voto -->
+              <div class="star">
+                <i v-for="n in star(element.vote_average)"
+                class="fas fa-star fa-xs"></i>
+                <i v-for="n in 5 - star(element.vote_average)"
+                class="far fa-star fa-xs"></i>
+              </div>
+
+              <!-- lingua -->
+              <p v-if= "element.original_language !== 'it' && element.original_language !== 'en' ">{{ element.original_language }}</p>
+              <img class="flag" v-else :src=" './img/' + element.original_language + '.png' " alt="">
+            </li>
+          </ul>
+
+        </div>
+      </main>
 
     </div>
 
