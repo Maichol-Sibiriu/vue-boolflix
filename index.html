@@ -12,6 +12,9 @@
 
     <div id="boolflix">
 
+      <!-- logo -->
+      <img src="https://fontmeme.com/temporary/0a43aa36584f2895324a0006b42b5d1a.png" alt="">
+
       <input type="text"
              placeholder="inserisci titolo"
              v-model="search"
@@ -27,7 +30,8 @@
 
         <ul>
           <li v-for="element in obj">
-            <img :src="imgMovie + element.poster_path" alt="">
+            <img v-if="element.poster_path === null" src="https://www.altavod.com/assets/images/poster-placeholder.png" alt="">
+            <img v-else :src="imgMovie + element.poster_path" alt="">
             <h3>title :</h3>
             <p v-if="element.title">{{ element.title }}</p>
             <p v-else>{{ element.name }}</p>
