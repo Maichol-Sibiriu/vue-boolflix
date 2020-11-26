@@ -6,11 +6,8 @@ const app = new Vue({
     // riferimento input per ricerca
     search: '',
 
-    // array vuoto per ricerca
+    // array vuoto per ricerca film
     obj: [],
-
-    // bandiere
-    flag: "",
 
   },
   created(){
@@ -20,6 +17,9 @@ const app = new Vue({
 
     searchMovie(){
 
+      this.obj = [];
+
+      // films
       axios.get('https://api.themoviedb.org/3/search/movie',{
         params:{
          api_key: '4b07c066077a749793da32ab86c8cf25',
@@ -29,7 +29,26 @@ const app = new Vue({
       })
       .then( response => {
 
-        this.obj = response.data.results;
+        this.obj = this.obj.concat(response.data.results);
+
+        this.search = '';
+
+      })
+      .catch( error => {
+       console.log(error);
+      })
+
+      // serie tv
+      axios.get('https://api.themoviedb.org/3/search/tv',{
+        params:{
+         api_key: '4b07c066077a749793da32ab86c8cf25',
+         query: this.search,
+         language: 'it-IT'
+        }
+      })
+      .then( response => {
+
+        this.obj = this.obj.concat(response.data.results);
 
         this.search = '';
 

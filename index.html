@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="./css/style.css">
   </head>
@@ -28,11 +28,14 @@
         <ul>
           <li v-for="element in obj">
             <h3>title :</h3>
-            <p>{{ element.title }}</p>
+            <p v-if="element.title">{{ element.title }}</p>
+            <p v-else>{{ element.name }}</p>
             <h3>original_title :</h3>
-            <p>{{ element.original_title }}</p>
+            <p v-if="element.original_title">{{ element.original_title }}</p>
+            <p v-else>{{ element.original_name }}</p>
             <h3>original_language :</h3>
-            <img :src=" './img/' + element.original_language + '.png' " alt="">
+            <p v-if= "element.original_language !== 'it' && element.original_language !== 'en' ">{{ element.original_language }}</p>
+            <img v-else :src=" './img/' + element.original_language + '.png' " alt="">
             <h3>vote_average :</h3>
             <i v-for="n in star(element.vote_average)"
                  class="fas fa-star"></i>
