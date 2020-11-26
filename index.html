@@ -27,18 +27,18 @@
 
         <ul>
           <li v-for="element in obj">
+            <h3>title :</h3>
             <p>{{ element.title }}</p>
+            <h3>original_title :</h3>
             <p>{{ element.original_title }}</p>
-            <p>{{ element.original_language }}</p>
-
-            <div class="">
-
-              <i v-for="n in star(vote)"
+            <h3>original_language :</h3>
+            <img v-if="language(element.original_language)" src="./img/en.png" alt="">
+            <img v-else src="./img/it.png" alt="">
+            <h3>vote_average :</h3>
+            <i v-for="n in star(element.vote_average)"
                  class="fas fa-star"></i>
-              <i v-for="n in 5"
+            <i v-for="n in 5 - star(element.vote_average)"
                  class="far fa-star"></i>
-
-            </div>
           </li>
         </ul>
 

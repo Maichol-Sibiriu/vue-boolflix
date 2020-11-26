@@ -3,7 +3,7 @@ const app = new Vue({
   el:'#boolflix',
   data:{
 
-    // riferimento input
+    // riferimento input per ricerca
     search: '',
 
     // array vuoto per ricerca
@@ -21,28 +21,12 @@ const app = new Vue({
         params:{
          api_key: '4b07c066077a749793da32ab86c8cf25',
          query: this.search,
+         language: 'it-IT'
         }
       })
       .then( response => {
-        // console.log(response.data);
 
-        if (this.search !== '') {
-          let list = response.data.results;
-
-          list.forEach( film => {
-
-            if (film.title.toLowerCase().includes(this.search.toLowerCase()) || film.original_title.toLowerCase().includes(this.search.toLowerCase()) ) {
-              this.obj.push({
-                title: film.title,
-                original_title: film.original_title,
-                original_language: film.original_language,
-                vote_average: film.vote_average,
-              })
-            }
-
-          });
-
-        }
+        this.obj = response.data.results;
 
         this.search = '';
 
@@ -52,10 +36,20 @@ const app = new Vue({
       })
     },
 
-    // voti stelline
+    // stars
     star(vote){
-      return Math.ceil(element.vote_average / 2);
+      return Math.ceil(vote / 2);
     },
+
+    // language
+    language(lan){
+      if (element.original_language === en) {
+        return en;
+      }
+      else {
+        return it;
+      }
+    }
 
   },
 });
