@@ -32,8 +32,7 @@
             <h3>original_title :</h3>
             <p>{{ element.original_title }}</p>
             <h3>original_language :</h3>
-            <img v-if="language(element.original_language)" src="./img/en.png" alt="">
-            <img v-else src="./img/it.png" alt="">
+            <img :src=" './img/' + element.original_language + '.png' " alt="">
             <h3>vote_average :</h3>
             <i v-for="n in star(element.vote_average)"
                  class="fas fa-star"></i>

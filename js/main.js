@@ -9,6 +9,9 @@ const app = new Vue({
     // array vuoto per ricerca
     obj: [],
 
+    // bandiere
+    flag: "",
+
   },
   created(){
 
@@ -40,16 +43,6 @@ const app = new Vue({
     star(vote){
       return Math.ceil(vote / 2);
     },
-
-    // language
-    language(lan){
-      if (element.original_language === en) {
-        return en;
-      }
-      else {
-        return it;
-      }
-    }
 
   },
 });
