@@ -9,6 +9,8 @@ const app = new Vue({
     // array vuoto per ricerca film
     obj: [],
 
+    // immagine film
+    imgMovie: 'https://image.tmdb.org/t/p/w154',
   },
   created(){
 

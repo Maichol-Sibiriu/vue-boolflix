@@ -27,6 +27,7 @@
 
         <ul>
           <li v-for="element in obj">
+            <img :src="imgMovie + element.poster_path" alt="">
             <h3>title :</h3>
             <p v-if="element.title">{{ element.title }}</p>
             <p v-else>{{ element.name }}</p>
