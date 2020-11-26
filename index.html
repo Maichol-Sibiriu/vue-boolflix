@@ -42,9 +42,13 @@
           <ul>
             <li v-for="element in obj">
 
-              <!-- immagine film/serie tv -->
-              <img v-if="element.poster_path === null" src="https://www.altavod.com/assets/images/poster-placeholder.png" alt="">
-              <img v-else :src="imgMovie + element.poster_path" alt="">
+              <div class="img">
+
+                <!-- immagine film/serie tv -->
+                <img v-if="element.poster_path === null" src="https://www.altavod.com/assets/images/poster-placeholder.png" alt="">
+                <img v-else :src="imgMovie + element.poster_path" alt="">
+
+              </div>
 
               <!-- titolo -->
               <h3 v-if="element.title">{{ element.title }}</h3>
@@ -67,6 +71,7 @@
               <img class="flag" v-else :src=" './img/' + element.original_language + '.png' " alt="">
             </li>
           </ul>
+
 
         </div>
       </main>

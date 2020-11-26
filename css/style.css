@@ -71,12 +71,16 @@ main .result-list ul{
 }
 
 main .result-list ul li{
-  width: 200px;
+  flex-basis: 200px;
   margin: 5px 10px;
   padding: 20px;
   background-color: #2b3a47;
   text-align: center;
   cursor: pointer;
+}
+
+main .result-list ul li .img{
+  min-height: 240px;
 }
 
 main .result-list ul .flag{
