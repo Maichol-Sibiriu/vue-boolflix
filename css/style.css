@@ -130,6 +130,8 @@ main .result-list ul li .trailer p{
   text-align: left;
   line-height: 17px;
   margin: 15px;
+  color: white;
+  text-transform: uppercase;
 }
 
 main .result-list ul li:hover .trailer{
