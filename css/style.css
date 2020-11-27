@@ -23,6 +23,17 @@ p{
   font-size: 13px;
 }
 
+/* layout */
+#boolflix{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+main{
+  flex-grow: 1;
+}
+
 /* header */
 header {
   display: flex;
@@ -77,6 +88,8 @@ main .result-list ul li{
   background-color: #2b3a47;
   text-align: center;
   cursor: pointer;
+  position: relative;
+  overflow-y: auto;
 }
 
 main .result-list ul li .img{
@@ -99,4 +112,30 @@ main .result-list ul li p:last-child{
 
 main .result-list ul li img:first-child{
   width: 150px;
+}
+
+/* hover */
+main .result-list ul li .trailer{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .8);
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+main .result-list ul li .trailer p{
+  font-size: 12px;
+  text-align: left;
+  line-height: 17px;
+  margin: 15px;
+}
+
+main .result-list ul li:hover .trailer{
+  display: table;
+}
+
+.invisible{
+  display: none;
 }

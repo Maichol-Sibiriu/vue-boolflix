@@ -69,6 +69,14 @@
               <!-- lingua -->
               <p v-if= "element.original_language !== 'it' && element.original_language !== 'en' ">{{ element.original_language }}</p>
               <img class="flag" v-else :src=" './img/' + element.original_language + '.png' " alt="">
+
+              <!-- trama film/serie tv -->
+              <div v-if="element.overview !== '' " class="trailer">
+                <p>{{ element.overview }}</p>
+              </div>
+              <div v-else class="invisible">
+
+              </div>
             </li>
           </ul>
 
